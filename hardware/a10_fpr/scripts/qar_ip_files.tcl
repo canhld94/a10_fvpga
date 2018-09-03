@@ -31,7 +31,9 @@ proc qar_ip_files {{base_qar "base.qar"}} {
 
   # add individual files
   set list_handle [open $list_qar a+]
-  set list_in "opencl_bsp_ip.qsf base.qdb base.sdc pr_base.id"
+  # root_partition: static region
+  # dump: dump kernel
+  set list_in "opencl_bsp_ip.qsf root_partition.qdb dump.qdb base.sdc pr_base.id"
   foreach line $list_in {
     puts $list_handle $line
   }

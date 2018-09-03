@@ -67,7 +67,8 @@ set fast_compile [::aocl_fast_compile::is_fast_compile]
 
 if {[string match $revision_name "base"]} {
   post_message "Compiling base revision -> exporting the base revision compile database to QDB archive base.qdb!"
-  qexec "quartus_cdb $project_name -c $revision_name --export_design --snapshot final --file $revision_name.qdb"
+  qexec "quartus_cdb $project_name -c $revision_name --export_pr_static_block root_partition --snapshot final --file $revision_name.qdb"
+  qexec "quartus_cdb $project_name -c $revision_name --export_block kernel --snapshot final --file dump.qdb"
 }
 
 # Update onchip memory with mif created during preflow

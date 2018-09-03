@@ -30,8 +30,8 @@ load_package design
 # Load OpenCL BSP utility functions
 source "$sdk_root/ip/board/bsp/opencl_bsp_util.tcl"
 
-# Attempt to migrate qdb to a new Quartus version
-source "$sdk_root/ip/board/bsp/bak_flow.tcl"
+# Attempt to migrate qdb to a new Quartus version --> skip
+# source "$sdk_root/ip/board/bsp/bak_flow.tcl"
 
 set top_path "freeze_wrapper_inst|kernel_system_inst"
 
@@ -49,7 +49,7 @@ if {!$::aocl_incremental::incremental_compile} {
   }
   project_close
 
-  # Importing static partition from base revision compile
+  # Importing static partition from base revision compile --> change to base.qdb
   project_open top -revision top
   if {[catch {design::import_block root_partition -file root_partition.qdb} result]} {
     post_message -type error "Error! $result"

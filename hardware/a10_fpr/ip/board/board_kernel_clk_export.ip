@@ -3,11 +3,11 @@
   <spirit:vendor>Altera Corporation</spirit:vendor>
   <spirit:library>board_kernel_clk_export</spirit:library>
   <spirit:name>kernel_clk_export</spirit:name>
-  <spirit:version>16.1</spirit:version>
+  <spirit:version>17.1</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>clk</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -28,7 +28,7 @@
         <spirit:parameter>
           <spirit:name>clockRate</spirit:name>
           <spirit:displayName>Clock rate</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="clockRate">100000000</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="clockRate">150000000</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>clockRateKnown</spirit:name>
@@ -49,7 +49,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>clk_in</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -65,7 +65,7 @@
         <spirit:parameter>
           <spirit:name>clockRate</spirit:name>
           <spirit:displayName>Clock rate</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="clockRate">100000000</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="clockRate">150000000</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>externallyDriven</spirit:name>
@@ -91,7 +91,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>clk_in_reset</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -128,7 +128,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>clk_reset</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -231,14 +231,14 @@
       <spirit:vendor>Altera Corporation</spirit:vendor>
       <spirit:library>board_kernel_clk_export</spirit:library>
       <spirit:name>clock_source</spirit:name>
-      <spirit:version>16.1</spirit:version>
+      <spirit:version>17.1</spirit:version>
     </altera:entity_info>
     <altera:altera_module_parameters>
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>clockFrequency</spirit:name>
           <spirit:displayName>Clock frequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="clockFrequency">50000000</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="clockFrequency">150000000</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>clockFrequencyKnown</spirit:name>
@@ -248,7 +248,7 @@
         <spirit:parameter>
           <spirit:name>inputClockFrequency</spirit:name>
           <spirit:displayName>inputClockFrequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="inputClockFrequency">100000000</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="inputClockFrequency">150000000</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>resetSynchronousEdges</spirit:name>
@@ -273,6 +273,11 @@
           <spirit:name>deviceSpeedGrade</spirit:name>
           <spirit:displayName>Device Speed Grade</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="deviceSpeedGrade">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>generationId</spirit:name>
+          <spirit:displayName>Generation Id</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="generationId">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>bonusData</spirit:name>
@@ -317,7 +322,7 @@
                     </entry>
                     <entry>
                         <key>clockRate</key>
-                        <value>100000000</value>
+                        <value>150000000</value>
                     </entry>
                     <entry>
                         <key>clockRateKnown</key>
@@ -359,7 +364,7 @@
                 <parameterValueMap>
                     <entry>
                         <key>clockRate</key>
-                        <value>100000000</value>
+                        <value>150000000</value>
                     </entry>
                     <entry>
                         <key>externallyDriven</key>
@@ -460,7 +465,7 @@
                 <consumedSystemInfos>
                     <entry>
                         <key>CLOCK_RATE</key>
-                        <value>100000000</value>
+                        <value>150000000</value>
                     </entry>
                 </consumedSystemInfos>
             </value>
@@ -472,7 +477,7 @@
                 <suppliedSystemInfos>
                     <entry>
                         <key>CLOCK_RATE</key>
-                        <value>100000000</value>
+                        <value>150000000</value>
                     </entry>
                 </suppliedSystemInfos>
                 <consumedSystemInfos/>

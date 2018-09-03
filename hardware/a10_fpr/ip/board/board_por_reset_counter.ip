@@ -7,7 +7,7 @@
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>clk</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -39,7 +39,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>clk_reset</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -66,7 +66,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>s</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -235,9 +235,24 @@
           <spirit:value spirit:format="long" spirit:id="maximumPendingWriteTransactions">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>minimumReadLatency</spirit:name>
+          <spirit:displayName>minimumReadLatency</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="minimumReadLatency">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>minimumResponseLatency</spirit:name>
+          <spirit:displayName>Minimum response latency</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="minimumResponseLatency">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>minimumUninterruptedRunLength</spirit:name>
           <spirit:displayName>Minimum uninterrupted run length</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="minimumUninterruptedRunLength">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>prSafe</spirit:name>
+          <spirit:displayName>Partial Reconfiguration Safe</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="prSafe">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>printableDevice</spirit:name>
@@ -285,6 +300,11 @@
           <spirit:value spirit:format="bool" spirit:id="transparentBridge">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>waitrequestAllowance</spirit:name>
+          <spirit:displayName>Waitrequest allowance</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="waitrequestAllowance">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>wellBehavedWaitrequest</spirit:name>
           <spirit:displayName>Well-behaved waitrequest</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="wellBehavedWaitrequest">false</spirit:value>
@@ -330,7 +350,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>sw_reset</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -543,6 +563,11 @@
           <spirit:name>deviceSpeedGrade</spirit:name>
           <spirit:displayName>Device Speed Grade</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="deviceSpeedGrade">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>generationId</spirit:name>
+          <spirit:displayName>Generation Id</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="generationId">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>bonusData</spirit:name>
@@ -793,8 +818,20 @@
                         <value>0</value>
                     </entry>
                     <entry>
+                        <key>minimumReadLatency</key>
+                        <value>1</value>
+                    </entry>
+                    <entry>
+                        <key>minimumResponseLatency</key>
+                        <value>1</value>
+                    </entry>
+                    <entry>
                         <key>minimumUninterruptedRunLength</key>
                         <value>1</value>
+                    </entry>
+                    <entry>
+                        <key>prSafe</key>
+                        <value>false</value>
                     </entry>
                     <entry>
                         <key>printableDevice</key>
@@ -831,6 +868,10 @@
                     <entry>
                         <key>transparentBridge</key>
                         <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>waitrequestAllowance</key>
+                        <value>0</value>
                     </entry>
                     <entry>
                         <key>wellBehavedWaitrequest</key>

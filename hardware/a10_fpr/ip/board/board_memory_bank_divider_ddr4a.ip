@@ -7,7 +7,7 @@
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>acl_bsp_snoop</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon_streaming" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon_streaming" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -87,6 +87,11 @@
           <spirit:value spirit:format="string" spirit:id="packetDescription"></spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>prSafe</spirit:name>
+          <spirit:displayName>Partial Reconfiguration Safe</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="prSafe">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>readyLatency</spirit:name>
           <spirit:displayName>Ready latency</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="readyLatency">0</spirit:value>
@@ -100,7 +105,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>bank1</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -293,6 +298,21 @@
           <spirit:value spirit:format="long" spirit:id="maximumPendingWriteTransactions">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>minimumReadLatency</spirit:name>
+          <spirit:displayName>minimumReadLatency</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="minimumReadLatency">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>minimumResponseLatency</spirit:name>
+          <spirit:displayName>Minimum response latency</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="minimumResponseLatency">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>prSafe</spirit:name>
+          <spirit:displayName>Partial Reconfiguration Safe</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="prSafe">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>readLatency</spirit:name>
           <spirit:displayName>Read latency</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="readLatency">0</spirit:value>
@@ -323,6 +343,11 @@
           <spirit:value spirit:format="string" spirit:id="timingUnits">Cycles</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>waitrequestAllowance</spirit:name>
+          <spirit:displayName>Waitrequest allowance</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="waitrequestAllowance">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>writeWaitTime</spirit:name>
           <spirit:displayName>Write wait</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="writeWaitTime">0</spirit:value>
@@ -331,7 +356,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>clk</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -373,7 +398,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>kernel_clk</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -389,7 +414,7 @@
         <spirit:parameter>
           <spirit:name>clockRate</spirit:name>
           <spirit:displayName>Clock rate</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="clockRate">100000000</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="clockRate">400000000</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>externallyDriven</spirit:name>
@@ -415,7 +440,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>kernel_reset</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -452,7 +477,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>reset</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -489,7 +514,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>s</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -682,9 +707,24 @@
           <spirit:value spirit:format="long" spirit:id="maximumPendingWriteTransactions">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>minimumReadLatency</spirit:name>
+          <spirit:displayName>minimumReadLatency</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="minimumReadLatency">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>minimumResponseLatency</spirit:name>
+          <spirit:displayName>Minimum response latency</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="minimumResponseLatency">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>minimumUninterruptedRunLength</spirit:name>
           <spirit:displayName>Minimum uninterrupted run length</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="minimumUninterruptedRunLength">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>prSafe</spirit:name>
+          <spirit:displayName>Partial Reconfiguration Safe</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="prSafe">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>printableDevice</spirit:name>
@@ -730,6 +770,11 @@
           <spirit:name>transparentBridge</spirit:name>
           <spirit:displayName>Transparent bridge</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="transparentBridge">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>waitrequestAllowance</spirit:name>
+          <spirit:displayName>Waitrequest allowance</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="waitrequestAllowance">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>wellBehavedWaitrequest</spirit:name>
@@ -1206,27 +1251,27 @@
         <spirit:parameter>
           <spirit:name>AUTO_CLK_CLOCK_DOMAIN</spirit:name>
           <spirit:displayName>Auto CLOCK_DOMAIN</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="AUTO_CLK_CLOCK_DOMAIN">13</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="AUTO_CLK_CLOCK_DOMAIN">25</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>AUTO_CLK_RESET_DOMAIN</spirit:name>
           <spirit:displayName>Auto RESET_DOMAIN</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="AUTO_CLK_RESET_DOMAIN">13</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="AUTO_CLK_RESET_DOMAIN">25</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>AUTO_KERNEL_CLK_CLOCK_RATE</spirit:name>
           <spirit:displayName>Auto CLOCK_RATE</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="AUTO_KERNEL_CLK_CLOCK_RATE">100000000</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="AUTO_KERNEL_CLK_CLOCK_RATE">400000000</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>AUTO_KERNEL_CLK_CLOCK_DOMAIN</spirit:name>
           <spirit:displayName>Auto CLOCK_DOMAIN</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="AUTO_KERNEL_CLK_CLOCK_DOMAIN">10</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="AUTO_KERNEL_CLK_CLOCK_DOMAIN">1</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>AUTO_KERNEL_CLK_RESET_DOMAIN</spirit:name>
           <spirit:displayName>Auto RESET_DOMAIN</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="AUTO_KERNEL_CLK_RESET_DOMAIN">10</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="AUTO_KERNEL_CLK_RESET_DOMAIN">1</spirit:value>
         </spirit:parameter>
       </spirit:parameters>
     </altera:altera_module_parameters>
@@ -1246,6 +1291,11 @@
           <spirit:name>deviceSpeedGrade</spirit:name>
           <spirit:displayName>Device Speed Grade</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="deviceSpeedGrade">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>generationId</spirit:name>
+          <spirit:displayName>Generation Id</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="generationId">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>bonusData</spirit:name>
@@ -1338,6 +1388,10 @@
                     <entry>
                         <key>packetDescription</key>
                         <value></value>
+                    </entry>
+                    <entry>
+                        <key>prSafe</key>
+                        <value>false</value>
                     </entry>
                     <entry>
                         <key>readyLatency</key>
@@ -1525,6 +1579,18 @@
                         <value>0</value>
                     </entry>
                     <entry>
+                        <key>minimumReadLatency</key>
+                        <value>1</value>
+                    </entry>
+                    <entry>
+                        <key>minimumResponseLatency</key>
+                        <value>1</value>
+                    </entry>
+                    <entry>
+                        <key>prSafe</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
                         <key>readLatency</key>
                         <value>0</value>
                     </entry>
@@ -1547,6 +1613,10 @@
                     <entry>
                         <key>timingUnits</key>
                         <value>Cycles</value>
+                    </entry>
+                    <entry>
+                        <key>waitrequestAllowance</key>
+                        <value>0</value>
                     </entry>
                     <entry>
                         <key>writeWaitTime</key>
@@ -1619,7 +1689,7 @@
                 <parameterValueMap>
                     <entry>
                         <key>clockRate</key>
-                        <value>100000000</value>
+                        <value>400000000</value>
                     </entry>
                     <entry>
                         <key>externallyDriven</key>
@@ -1892,8 +1962,20 @@
                         <value>0</value>
                     </entry>
                     <entry>
+                        <key>minimumReadLatency</key>
+                        <value>1</value>
+                    </entry>
+                    <entry>
+                        <key>minimumResponseLatency</key>
+                        <value>1</value>
+                    </entry>
+                    <entry>
                         <key>minimumUninterruptedRunLength</key>
                         <value>1</value>
+                    </entry>
+                    <entry>
+                        <key>prSafe</key>
+                        <value>false</value>
                     </entry>
                     <entry>
                         <key>printableDevice</key>
@@ -1932,6 +2014,10 @@
                         <value>false</value>
                     </entry>
                     <entry>
+                        <key>waitrequestAllowance</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
                         <key>wellBehavedWaitrequest</key>
                         <value>false</value>
                     </entry>
@@ -1965,7 +2051,7 @@
                 <suppliedSystemInfos>
                     <entry>
                         <key>CLOCK_DOMAIN</key>
-                        <value>13</value>
+                        <value>25</value>
                     </entry>
                     <entry>
                         <key>CLOCK_RATE</key>
@@ -1973,7 +2059,7 @@
                     </entry>
                     <entry>
                         <key>RESET_DOMAIN</key>
-                        <value>13</value>
+                        <value>25</value>
                     </entry>
                 </suppliedSystemInfos>
                 <consumedSystemInfos/>
@@ -1986,15 +2072,15 @@
                 <suppliedSystemInfos>
                     <entry>
                         <key>CLOCK_DOMAIN</key>
-                        <value>10</value>
+                        <value>1</value>
                     </entry>
                     <entry>
                         <key>CLOCK_RATE</key>
-                        <value>100000000</value>
+                        <value>400000000</value>
                     </entry>
                     <entry>
                         <key>RESET_DOMAIN</key>
-                        <value>10</value>
+                        <value>1</value>
                     </entry>
                 </suppliedSystemInfos>
                 <consumedSystemInfos/>

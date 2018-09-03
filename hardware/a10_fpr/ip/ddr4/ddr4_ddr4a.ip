@@ -1,13 +1,13 @@
 <?xml version="1.0" ?>
 <spirit:component xmlns:altera="http://www.altera.com/XMLSchema/IPXact/extensions" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009">
-  <spirit:vendor>Altera Corporation</spirit:vendor>
+  <spirit:vendor>Intel Corporation</spirit:vendor>
   <spirit:library>ddr4_ddr4a</spirit:library>
   <spirit:name>ddr4a</spirit:name>
-  <spirit:version>16.1</spirit:version>
+  <spirit:version>17.1</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>ctrl_amm_avalon_slave_0</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -200,9 +200,24 @@
           <spirit:value spirit:format="long" spirit:id="maximumPendingWriteTransactions">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>minimumReadLatency</spirit:name>
+          <spirit:displayName>minimumReadLatency</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="minimumReadLatency">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>minimumResponseLatency</spirit:name>
+          <spirit:displayName>Minimum response latency</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="minimumResponseLatency">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>minimumUninterruptedRunLength</spirit:name>
           <spirit:displayName>Minimum uninterrupted run length</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="minimumUninterruptedRunLength">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>prSafe</spirit:name>
+          <spirit:displayName>Partial Reconfiguration Safe</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="prSafe">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>printableDevice</spirit:name>
@@ -250,6 +265,11 @@
           <spirit:value spirit:format="bool" spirit:id="transparentBridge">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>waitrequestAllowance</spirit:name>
+          <spirit:displayName>Waitrequest allowance</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="waitrequestAllowance">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>wellBehavedWaitrequest</spirit:name>
           <spirit:displayName>Well-behaved waitrequest</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="wellBehavedWaitrequest">false</spirit:value>
@@ -295,7 +315,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>emif_usr_clk_clock_source</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -337,7 +357,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>emif_usr_reset_reset_source</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -374,7 +394,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>global_reset_reset_sink</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -401,7 +421,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>mem_conduit_end</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -527,12 +547,17 @@
           <spirit:name>associatedReset</spirit:name>
           <spirit:displayName>associatedReset</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="associatedReset"></spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>prSafe</spirit:name>
+          <spirit:displayName>Partial Reconfiguration Safe</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="prSafe">false</spirit:value>
         </spirit:parameter>
       </spirit:parameters>
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>oct_conduit_end</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -555,11 +580,16 @@
           <spirit:displayName>associatedReset</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="associatedReset"></spirit:value>
         </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>prSafe</spirit:name>
+          <spirit:displayName>Partial Reconfiguration Safe</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="prSafe">false</spirit:value>
+        </spirit:parameter>
       </spirit:parameters>
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>pll_ref_clk_clock_sink</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -591,7 +621,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>status_conduit_end</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="16.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -621,6 +651,11 @@
           <spirit:name>associatedReset</spirit:name>
           <spirit:displayName>associatedReset</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="associatedReset"></spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>prSafe</spirit:name>
+          <spirit:displayName>Partial Reconfiguration Safe</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="prSafe">false</spirit:value>
         </spirit:parameter>
       </spirit:parameters>
     </spirit:busInterface>
@@ -1045,10 +1080,10 @@
   </spirit:model>
   <spirit:vendorExtensions>
     <altera:entity_info>
-      <spirit:vendor>Altera Corporation</spirit:vendor>
+      <spirit:vendor>Intel Corporation</spirit:vendor>
       <spirit:library>ddr4_ddr4a</spirit:library>
       <spirit:name>altera_emif</spirit:name>
-      <spirit:version>16.1</spirit:version>
+      <spirit:version>17.1</spirit:version>
     </altera:entity_info>
     <altera:altera_module_parameters>
       <spirit:parameters>
@@ -1066,6 +1101,11 @@
           <spirit:name>SYS_INFO_DEVICE_SPEEDGRADE</spirit:name>
           <spirit:displayName>PARAM_SYS_INFO_DEVICE_SPEEDGRADE_NAME</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="SYS_INFO_DEVICE_SPEEDGRADE">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>SYS_INFO_DEVICE_DIE_REVISIONS</spirit:name>
+          <spirit:displayName>PARAM_SYS_INFO_DEVICE_DIE_REVISIONS_NAME</spirit:displayName>
+          <spirit:value spirit:format="string" spirit:id="SYS_INFO_DEVICE_DIE_REVISIONS"></spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FAMILY_ENUM</spirit:name>
@@ -1208,19 +1248,424 @@
           <spirit:value spirit:format="string" spirit:id="PHY_USER_PERIODIC_OCT_RECAL_ENUM">PERIODIC_OCT_RECAL_AUTO</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>PLL_ADD_EXTRA_CLKS</spirit:name>
+          <spirit:displayName>Specify additional core clocks based on existing PLL</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="PLL_ADD_EXTRA_CLKS">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_USER_NUM_OF_EXTRA_CLKS</spirit:name>
+          <spirit:displayName>Number of additional core clocks</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="PLL_USER_NUM_OF_EXTRA_CLKS">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_0</spirit:name>
+          <spirit:displayName>Frequency</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_0">300.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_0</spirit:name>
+          <spirit:displayName>Phase shift</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_0">104.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_0</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_0_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_0">300.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_0</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_0_NAME</spirit:displayName>
+          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_0">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_PHASE_GUI_0</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_PHASE_GUI_0_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_PHASE_GUI_0">104.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_0</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_0_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_0">11.2</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_0</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_0_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_0">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_0</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_0_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_0">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_0</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_0_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_0">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_1</spirit:name>
+          <spirit:displayName>Frequency</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_1">600.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_1</spirit:name>
+          <spirit:displayName>Phase shift</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_1">104.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_1</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_1_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_1">600.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_1</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_1_NAME</spirit:displayName>
+          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_1">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_PHASE_GUI_1</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_PHASE_GUI_1_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_PHASE_GUI_1">104.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_1</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_1_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_1">22.5</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_1</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_1_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_1">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_1</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_1_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_1">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_1</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_1_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_1">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_2</spirit:name>
+          <spirit:displayName>Frequency</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_2">300.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_2</spirit:name>
+          <spirit:displayName>Phase shift</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_2">104.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_2</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_2_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_2">300.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_2</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_2_NAME</spirit:displayName>
+          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_2">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_PHASE_GUI_2</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_PHASE_GUI_2_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_PHASE_GUI_2">104.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_2</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_2_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_2">11.2</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_2</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_2_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_2">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_2</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_2_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_2">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_2</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_2_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_2">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_3</spirit:name>
+          <spirit:displayName>Frequency</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_3">150.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_3</spirit:name>
+          <spirit:displayName>Phase shift</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_3">0.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_3</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_3_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_3">150.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_3</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_3_NAME</spirit:displayName>
+          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_3">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_PHASE_GUI_3</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_PHASE_GUI_3_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_PHASE_GUI_3">0.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_3</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_3_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_3">0.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_3</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_3_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_3">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_3</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_3_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_3">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_3</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_3_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_3">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_4</spirit:name>
+          <spirit:displayName>Frequency</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_4">150.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_4</spirit:name>
+          <spirit:displayName>Phase shift</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_4">0.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_4</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_4_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_4">150.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_4</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_4_NAME</spirit:displayName>
+          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_4">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_PHASE_GUI_4</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_PHASE_GUI_4_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_PHASE_GUI_4">0.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_4</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_4_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_4">0.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_4</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_4_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_4">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_4</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_4_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_4">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_4</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_4_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_4">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_5</spirit:name>
+          <spirit:displayName>Frequency</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_5">100.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_5</spirit:name>
+          <spirit:displayName>Phase shift</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_5">0.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_5</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_5_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_5">100.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_5</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_5_NAME</spirit:displayName>
+          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_5">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_PHASE_GUI_5</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_PHASE_GUI_5_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_PHASE_GUI_5">0.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_5</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_5_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_5">0.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_5</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_5_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_5">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_5</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_5_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_5">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_5</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_5_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_5">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_6</spirit:name>
+          <spirit:displayName>Frequency</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_6">100.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_6</spirit:name>
+          <spirit:displayName>Phase shift</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_6">0.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_6</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_6_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_6">100.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_6</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_6_NAME</spirit:displayName>
+          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_6">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_PHASE_GUI_6</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_PHASE_GUI_6_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_PHASE_GUI_6">0.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_6</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_6_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_6">0.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_6</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_6_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_6">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_6</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_6_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_6">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_6</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_6_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_6">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_7</spirit:name>
+          <spirit:displayName>Frequency</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_7">100.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_7</spirit:name>
+          <spirit:displayName>Phase shift</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_7">0.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_7</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_7_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_7">100.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_7</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_7_NAME</spirit:displayName>
+          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_7">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_PHASE_GUI_7</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_PHASE_GUI_7_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_PHASE_GUI_7">0.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_7</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_7_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_7">0.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_7</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_7_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_7">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_7</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_7_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_7">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_7</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_7_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_7">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_8</spirit:name>
+          <spirit:displayName>Frequency</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_8">100.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_8</spirit:name>
+          <spirit:displayName>Phase shift</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_8">0.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_8</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_8_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_8">100.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_8</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_8_NAME</spirit:displayName>
+          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_8">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_PHASE_GUI_8</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_PHASE_GUI_8_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_PHASE_GUI_8">0.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_8</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_8_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_8">0.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_8</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_8_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_8">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_8</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_8_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_8">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_8</spirit:name>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_8_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_8">50.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>PLL_VCO_CLK_FREQ_MHZ</spirit:name>
           <spirit:displayName>PARAM_PLL_VCO_CLK_FREQ_MHZ_NAME</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_VCO_CLK_FREQ_MHZ">1200.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_SPEEDGRADE</spirit:name>
-          <spirit:displayName>PARAM_PLL_SPEEDGRADE_NAME</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_SPEEDGRADE">1</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_DISALLOW_EXTRA_CLKS</spirit:name>
-          <spirit:displayName>PARAM_PLL_DISALLOW_EXTRA_CLKS_NAME</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_DISALLOW_EXTRA_CLKS">false</spirit:value>
+          <spirit:value spirit:format="float" spirit:id="PLL_VCO_CLK_FREQ_MHZ">1200.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PLL_NUM_OF_EXTRA_CLKS</spirit:name>
@@ -1228,544 +1673,94 @@
           <spirit:value spirit:format="long" spirit:id="PLL_NUM_OF_EXTRA_CLKS">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
-          <spirit:name>PLL_MAPPED_SYS_INFO_DEVICE_FAMILY</spirit:name>
-          <spirit:displayName>PLL_MAPPED_SYS_INFO_DEVICE_FAMILY</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_MAPPED_SYS_INFO_DEVICE_FAMILY">Arria 10</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_MAPPED_SYS_INFO_DEVICE</spirit:name>
-          <spirit:displayName>PLL_MAPPED_SYS_INFO_DEVICE</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_MAPPED_SYS_INFO_DEVICE">10AX115S2F45I1SG</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_MAPPED_SYS_INFO_DEVICE_SPEEDGRADE</spirit:name>
-          <spirit:displayName>PLL_MAPPED_SYS_INFO_DEVICE_SPEEDGRADE</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_MAPPED_SYS_INFO_DEVICE_SPEEDGRADE">1</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_MAPPED_REFERENCE_CLOCK_FREQUENCY</spirit:name>
-          <spirit:displayName>PLL_MAPPED_REFERENCE_CLOCK_FREQUENCY</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_MAPPED_REFERENCE_CLOCK_FREQUENCY">150.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_MAPPED_VCO_FREQUENCY</spirit:name>
-          <spirit:displayName>PLL_MAPPED_VCO_FREQUENCY</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_MAPPED_VCO_FREQUENCY">1200.0 MHz</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_MAPPED_EXTERNAL_PLL_MODE</spirit:name>
-          <spirit:displayName>PLL_MAPPED_EXTERNAL_PLL_MODE</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_MAPPED_EXTERNAL_PLL_MODE">false</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_ADD_EXTRA_CLKS</spirit:name>
-          <spirit:displayName>Specify additional core clocks based on existing PLL</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="PLL_ADD_EXTRA_CLKS">0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_COMPENSATION_MODE</spirit:name>
-          <spirit:displayName>Compensation mode</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_COMPENSATION_MODE">emif</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_USER_NUM_OF_EXTRA_CLKS</spirit:name>
-          <spirit:displayName>Number of additional core clocks</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_USER_NUM_OF_EXTRA_CLKS">0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_0</spirit:name>
-          <spirit:displayName>Desired frequency</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_0">300.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_0</spirit:name>
-          <spirit:displayName>Actual frequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_0">300.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
           <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_0</spirit:name>
-          <spirit:displayName>Actual frequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_0">300.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_0</spirit:name>
-          <spirit:displayName>Phase shift units</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_0">0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_PHASE_GUI_0</spirit:name>
-          <spirit:displayName>Phase shift</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_PHASE_GUI_0">104.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_0</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_0">104</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_0</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_0">11.2</spirit:value>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_0_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_0">0.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_0</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_0">104.16666666666667</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_0</spirit:name>
-          <spirit:displayName>Desired duty cycle</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_0">50.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_0</spirit:name>
-          <spirit:displayName>Actual duty cycle</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_0">50</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_0</spirit:name>
-          <spirit:displayName>Actual duty cycle</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_0">50.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_1</spirit:name>
-          <spirit:displayName>Desired frequency</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_1">600.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_1</spirit:name>
-          <spirit:displayName>Actual frequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_1">600.0</spirit:value>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_PHASE_PS_0_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_0">0.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_1</spirit:name>
-          <spirit:displayName>Actual frequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_1">600.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_1</spirit:name>
-          <spirit:displayName>Phase shift units</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_1">0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_PHASE_GUI_1</spirit:name>
-          <spirit:displayName>Phase shift</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_PHASE_GUI_1">104.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_1</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_1">104</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_1</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_1">22.5</spirit:value>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_1_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_1">0.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_1</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_1">104.16666666666667</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_1</spirit:name>
-          <spirit:displayName>Desired duty cycle</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_1">50.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_1</spirit:name>
-          <spirit:displayName>Actual duty cycle</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_1">50</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_1</spirit:name>
-          <spirit:displayName>Actual duty cycle</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_1">50.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_2</spirit:name>
-          <spirit:displayName>Desired frequency</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_2">300.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_2</spirit:name>
-          <spirit:displayName>Actual frequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_2">300.0</spirit:value>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_PHASE_PS_1_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_1">0.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_2</spirit:name>
-          <spirit:displayName>Actual frequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_2">300.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_2</spirit:name>
-          <spirit:displayName>Phase shift units</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_2">0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_PHASE_GUI_2</spirit:name>
-          <spirit:displayName>Phase shift</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_PHASE_GUI_2">104.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_2</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_2">104</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_2</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_2">11.2</spirit:value>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_2_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_2">0.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_2</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_2">104.16666666666667</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_2</spirit:name>
-          <spirit:displayName>Desired duty cycle</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_2">50.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_2</spirit:name>
-          <spirit:displayName>Actual duty cycle</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_2">50</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_2</spirit:name>
-          <spirit:displayName>Actual duty cycle</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_2">50.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_3</spirit:name>
-          <spirit:displayName>Desired frequency</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_3">150.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_3</spirit:name>
-          <spirit:displayName>Actual frequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_3">150.0</spirit:value>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_PHASE_PS_2_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_2">0.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_3</spirit:name>
-          <spirit:displayName>Actual frequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_3">150.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_3</spirit:name>
-          <spirit:displayName>Phase shift units</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_3">0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_PHASE_GUI_3</spirit:name>
-          <spirit:displayName>Phase shift</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_PHASE_GUI_3">0.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_3</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_3">0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_3</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_3">0.0</spirit:value>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_3_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_3">0.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_3</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_3">0.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_3</spirit:name>
-          <spirit:displayName>Desired duty cycle</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_3">50.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_3</spirit:name>
-          <spirit:displayName>Actual duty cycle</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_3">50</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_3</spirit:name>
-          <spirit:displayName>Actual duty cycle</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_3">50.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_4</spirit:name>
-          <spirit:displayName>Desired frequency</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_4">150.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_4</spirit:name>
-          <spirit:displayName>Actual frequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_4">150.0</spirit:value>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_PHASE_PS_3_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_3">0.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_4</spirit:name>
-          <spirit:displayName>Actual frequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_4">150.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_4</spirit:name>
-          <spirit:displayName>Phase shift units</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_4">0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_PHASE_GUI_4</spirit:name>
-          <spirit:displayName>Phase shift</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_PHASE_GUI_4">0.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_4</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_4">0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_4</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_4">0.0</spirit:value>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_4_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_4">0.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_4</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_4">0.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_4</spirit:name>
-          <spirit:displayName>Desired duty cycle</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_4">50.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_4</spirit:name>
-          <spirit:displayName>Actual duty cycle</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_4">50</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_4</spirit:name>
-          <spirit:displayName>Actual duty cycle</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_4">50.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_5</spirit:name>
-          <spirit:displayName>Desired frequency</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_5">100.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_5</spirit:name>
-          <spirit:displayName>Actual frequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_5">100.0</spirit:value>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_PHASE_PS_4_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_4">0.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_5</spirit:name>
-          <spirit:displayName>Actual frequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_5">100.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_5</spirit:name>
-          <spirit:displayName>Phase shift units</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_5">0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_PHASE_GUI_5</spirit:name>
-          <spirit:displayName>Phase shift</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_PHASE_GUI_5">0.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_5</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_5">0.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_5</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_5">0.0</spirit:value>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_5_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_5">1200.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_5</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_5">0.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_5</spirit:name>
-          <spirit:displayName>Desired duty cycle</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_5">50.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_5</spirit:name>
-          <spirit:displayName>Actual duty cycle</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_5">50.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_5</spirit:name>
-          <spirit:displayName>Actual duty cycle</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_5">50.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_6</spirit:name>
-          <spirit:displayName>Desired frequency</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_6">100.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_6</spirit:name>
-          <spirit:displayName>Actual frequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_6">100.0</spirit:value>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_PHASE_PS_5_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_5">0.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_6</spirit:name>
-          <spirit:displayName>Actual frequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_6">100.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_6</spirit:name>
-          <spirit:displayName>Phase shift units</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_6">0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_PHASE_GUI_6</spirit:name>
-          <spirit:displayName>Phase shift</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_PHASE_GUI_6">0.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_6</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_6">0.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_6</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_6">0.0</spirit:value>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_6_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_6">1200.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_6</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_6">0.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_6</spirit:name>
-          <spirit:displayName>Desired duty cycle</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_6">50.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_6</spirit:name>
-          <spirit:displayName>Actual duty cycle</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_6">50.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_6</spirit:name>
-          <spirit:displayName>Actual duty cycle</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_6">50.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_7</spirit:name>
-          <spirit:displayName>Desired frequency</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_7">100.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_7</spirit:name>
-          <spirit:displayName>Actual frequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_7">100.0</spirit:value>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_PHASE_PS_6_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_6">0.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_7</spirit:name>
-          <spirit:displayName>Actual frequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_7">100.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_7</spirit:name>
-          <spirit:displayName>Phase shift units</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_7">0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_PHASE_GUI_7</spirit:name>
-          <spirit:displayName>Phase shift</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_PHASE_GUI_7">0.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_7</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_7">0.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_7</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_7">0.0</spirit:value>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_7_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_7">1200.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_7</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_7">0.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_7</spirit:name>
-          <spirit:displayName>Desired duty cycle</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_7">50.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_7</spirit:name>
-          <spirit:displayName>Actual duty cycle</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_7">50.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_7</spirit:name>
-          <spirit:displayName>Actual duty cycle</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_7">50.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_8</spirit:name>
-          <spirit:displayName>Desired frequency</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_FREQ_MHZ_GUI_8">100.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_8</spirit:name>
-          <spirit:displayName>Actual frequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_GUI_8">100.0</spirit:value>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_PHASE_PS_7_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_7">0.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_8</spirit:name>
-          <spirit:displayName>Actual frequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_8">100.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_8</spirit:name>
-          <spirit:displayName>Phase shift units</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_PHASE_SHIFT_UNIT_GUI_8">0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_PHASE_GUI_8</spirit:name>
-          <spirit:displayName>Phase shift</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_PHASE_GUI_8">0.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_8</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_GUI_8">0.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_8</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_DEG_GUI_8">0.0</spirit:value>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_8_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_FREQ_MHZ_8">1200.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PLL_EXTRA_CLK_ACTUAL_PHASE_PS_8</spirit:name>
-          <spirit:displayName>Actual phase shift</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_8">0.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_8</spirit:name>
-          <spirit:displayName>Desired duty cycle</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_DESIRED_DUTY_CYCLE_GUI_8">50.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_8</spirit:name>
-          <spirit:displayName>Actual duty cycle</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_GUI_8">50.0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_8</spirit:name>
-          <spirit:displayName>Actual duty cycle</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="PLL_EXTRA_CLK_ACTUAL_DUTY_CYCLE_8">50.0</spirit:value>
+          <spirit:displayName>PARAM_PLL_EXTRA_CLK_ACTUAL_PHASE_PS_8_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="PLL_EXTRA_CLK_ACTUAL_PHASE_PS_8">0.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PHY_DDR3_CONFIG_ENUM</spirit:name>
@@ -3213,9 +3208,19 @@
           <spirit:value spirit:format="bool" spirit:id="MEM_HAS_SIM_SUPPORT">true</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>MEM_NUM_OF_PHYSICAL_RANKS</spirit:name>
+          <spirit:displayName>PARAM_MEM_NUM_OF_PHYSICAL_RANKS_NAME</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="MEM_NUM_OF_PHYSICAL_RANKS">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>MEM_NUM_OF_LOGICAL_RANKS</spirit:name>
           <spirit:displayName>PARAM_MEM_NUM_OF_LOGICAL_RANKS_NAME</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="MEM_NUM_OF_LOGICAL_RANKS">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>MEM_NUM_OF_DATA_ENDPOINTS</spirit:name>
+          <spirit:displayName>PARAM_MEM_NUM_OF_DATA_ENDPOINTS_NAME</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="MEM_NUM_OF_DATA_ENDPOINTS">1</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MEM_TTL_DATA_WIDTH</spirit:name>
@@ -3993,6 +3998,11 @@
           <spirit:value spirit:format="long" spirit:id="MEM_DDR4_NUM_OF_DIMMS">1</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>MEM_DDR4_CHIP_ID_WIDTH</spirit:name>
+          <spirit:displayName>Chip ID width</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="MEM_DDR4_CHIP_ID_WIDTH">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>MEM_DDR4_RANKS_PER_DIMM</spirit:name>
           <spirit:displayName>Number of physical ranks per DIMM</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="MEM_DDR4_RANKS_PER_DIMM">1</spirit:value>
@@ -4026,11 +4036,6 @@
           <spirit:name>MEM_DDR4_BANK_GROUP_WIDTH</spirit:name>
           <spirit:displayName>Bank group width</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="MEM_DDR4_BANK_GROUP_WIDTH">1</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>MEM_DDR4_CHIP_ID_WIDTH</spirit:name>
-          <spirit:displayName>Chip ID width</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="MEM_DDR4_CHIP_ID_WIDTH">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MEM_DDR4_DM_EN</spirit:name>
@@ -4553,6 +4558,16 @@
           <spirit:value spirit:format="long" spirit:id="MEM_DDR4_ADDRESS_MIRROR_BITVEC">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>MEM_DDR4_RCD_PARITY_CONTROL_WORD</spirit:name>
+          <spirit:displayName>PARAM_MEM_DDR4_RCD_PARITY_CONTROL_WORD_NAME</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="MEM_DDR4_RCD_PARITY_CONTROL_WORD">13</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>MEM_DDR4_RCD_COMMAND_LATENCY</spirit:name>
+          <spirit:displayName>PARAM_MEM_DDR4_RCD_COMMAND_LATENCY_NAME</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="MEM_DDR4_RCD_COMMAND_LATENCY">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>MEM_DDR4_USE_DEFAULT_ODT</spirit:name>
           <spirit:displayName>Use Default ODT Assertion Tables</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="MEM_DDR4_USE_DEFAULT_ODT">true</spirit:value>
@@ -4843,14 +4858,14 @@
           <spirit:value spirit:format="float" spirit:id="MEM_DDR4_TDSS_CYC">0.18</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
-          <spirit:name>MEM_DDR4_TWLS_PS</spirit:name>
+          <spirit:name>MEM_DDR4_TWLS_CYC</spirit:name>
           <spirit:displayName>tWLS</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="MEM_DDR4_TWLS_PS">108.0</spirit:value>
+          <spirit:value spirit:format="float" spirit:id="MEM_DDR4_TWLS_CYC">0.13</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
-          <spirit:name>MEM_DDR4_TWLH_PS</spirit:name>
+          <spirit:name>MEM_DDR4_TWLH_CYC</spirit:name>
           <spirit:displayName>tWLH</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="MEM_DDR4_TWLH_PS">108.0</spirit:value>
+          <spirit:value spirit:format="float" spirit:id="MEM_DDR4_TWLH_CYC">0.13</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MEM_DDR4_TINIT_US</spirit:name>
@@ -4926,6 +4941,21 @@
           <spirit:name>MEM_DDR4_TCCD_S_CYC</spirit:name>
           <spirit:displayName>tCCD_S</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="MEM_DDR4_TCCD_S_CYC">4</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>MEM_DDR4_TRFC_DLR_NS</spirit:name>
+          <spirit:displayName>tRFC_dlr</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="MEM_DDR4_TRFC_DLR_NS">90.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>MEM_DDR4_TFAW_DLR_CYC</spirit:name>
+          <spirit:displayName>tFAW_dlr</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="MEM_DDR4_TFAW_DLR_CYC">16</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>MEM_DDR4_TRRD_DLR_CYC</spirit:name>
+          <spirit:displayName>tRRD_dlr</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="MEM_DDR4_TRRD_DLR_CYC">4</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MEM_DDR4_TDIVW_DJ_CYC</spirit:name>
@@ -5013,6 +5043,11 @@
           <spirit:value spirit:format="long" spirit:id="MEM_DDR4_WRITE_CMD_LATENCY">6</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>MEM_DDR4_TRFC_DLR_CYC</spirit:name>
+          <spirit:displayName>PARAM_MEM_DDR4_TRFC_DLR_CYC_NAME</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="MEM_DDR4_TRFC_DLR_CYC">108</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>MEM_DDR4_CFG_GEN_SBE</spirit:name>
           <spirit:displayName>PARAM_MEM_DDR4_CFG_GEN_SBE_NAME</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="MEM_DDR4_CFG_GEN_SBE">false</spirit:value>
@@ -5026,6 +5061,16 @@
           <spirit:name>MEM_DDR4_LRDIMM_VREFDQ_VALUE</spirit:name>
           <spirit:displayName>PARAM_MEM_DDR4_LRDIMM_VREFDQ_VALUE_NAME</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="MEM_DDR4_LRDIMM_VREFDQ_VALUE">1D</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>MEM_DDR4_TWLS_PS</spirit:name>
+          <spirit:displayName>PARAM_MEM_DDR4_TWLS_PS_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="MEM_DDR4_TWLS_PS">0.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>MEM_DDR4_TWLH_PS</spirit:name>
+          <spirit:displayName>PARAM_MEM_DDR4_TWLH_PS_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="MEM_DDR4_TWLH_PS">0.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MEM_QDR2_WIDTH_EXPANDED</spirit:name>
@@ -5188,6 +5233,11 @@
           <spirit:value spirit:format="string" spirit:id="MEM_QDR4_PD_OUTPUT_DRIVE_MODE_ENUM">QDR4_OUTPUT_DRIVE_25_PCT</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>MEM_QDR4_MEM_TYPE_ENUM</spirit:name>
+          <spirit:displayName>Memory Type  </spirit:displayName>
+          <spirit:value spirit:format="string" spirit:id="MEM_QDR4_MEM_TYPE_ENUM">MEM_XP</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>MEM_QDR4_DATA_INV_ENA</spirit:name>
           <spirit:displayName>Data bus inversion</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="MEM_QDR4_DATA_INV_ENA">true</spirit:value>
@@ -5274,13 +5324,18 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MEM_QDR4_TRL_CYC</spirit:name>
-          <spirit:displayName>PARAM_MEM_QDR4_TRL_CYC_NAME</spirit:displayName>
+          <spirit:displayName>Memory Read latency </spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="MEM_QDR4_TRL_CYC">8</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MEM_QDR4_TWL_CYC</spirit:name>
-          <spirit:displayName>PARAM_MEM_QDR4_TWL_CYC_NAME</spirit:displayName>
+          <spirit:displayName>Memory Write latency </spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="MEM_QDR4_TWL_CYC">5</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>MEM_QDR4_AVL_CHNLS</spirit:name>
+          <spirit:displayName>PARAM_MEM_QDR4_AVL_CHNLS_NAME</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="MEM_QDR4_AVL_CHNLS">8</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MEM_QDR4_CR0</spirit:name>
@@ -5850,7 +5905,7 @@
         <spirit:parameter>
           <spirit:name>MEM_LPDDR3_NWR</spirit:name>
           <spirit:displayName>nWR cycles</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="MEM_LPDDR3_NWR">LPDDR3_NWR_NWR10</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="MEM_LPDDR3_NWR">LPDDR3_NWR_NWR12</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MEM_LPDDR3_NUM_OF_LOGICAL_RANKS</spirit:name>
@@ -7544,7 +7599,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>CTRL_DDR3_ECC_AUTO_CORRECTION_EN</spirit:name>
-          <spirit:displayName>Enable Auto Error Correction</spirit:displayName>
+          <spirit:displayName>Enable Auto Error Correction to External Memory</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="CTRL_DDR3_ECC_AUTO_CORRECTION_EN">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
@@ -7639,7 +7694,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>CTRL_DDR4_ECC_AUTO_CORRECTION_EN</spirit:name>
-          <spirit:displayName>Enable Auto Error Correction</spirit:displayName>
+          <spirit:displayName>Enable Auto Error Correction to External Memory</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="CTRL_DDR4_ECC_AUTO_CORRECTION_EN">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
@@ -7731,6 +7786,11 @@
           <spirit:name>CTRL_QDR4_ADD_WAR_TURNAROUND_DELAY_CYC</spirit:name>
           <spirit:displayName>Additional write-after-read turnaround time</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="CTRL_QDR4_ADD_WAR_TURNAROUND_DELAY_CYC">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>CTRL_QDR4_DEF_RAW_TURNAROUND_DELAY_CYC</spirit:name>
+          <spirit:displayName>PARAM_CTRL_QDR4_DEF_RAW_TURNAROUND_DELAY_CYC_NAME</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="CTRL_QDR4_DEF_RAW_TURNAROUND_DELAY_CYC">4</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>CTRL_QDR4_AVL_SYMBOL_WIDTH</spirit:name>
@@ -7868,6 +7928,16 @@
           <spirit:value spirit:format="string" spirit:id="DIAG_FAST_SIM_OVERRIDE">FAST_SIM_OVERRIDE_DEFAULT</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>DIAG_SEQ_RESET_AUTO_RELEASE</spirit:name>
+          <spirit:displayName>PARAM_DIAG_SEQ_RESET_AUTO_RELEASE_NAME</spirit:displayName>
+          <spirit:value spirit:format="string" spirit:id="DIAG_SEQ_RESET_AUTO_RELEASE">avl</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_DB_RESET_AUTO_RELEASE</spirit:name>
+          <spirit:displayName>PARAM_DIAG_DB_RESET_AUTO_RELEASE_NAME</spirit:displayName>
+          <spirit:value spirit:format="string" spirit:id="DIAG_DB_RESET_AUTO_RELEASE">avl_release</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>DIAG_VERBOSE_IOAUX</spirit:name>
           <spirit:displayName>Show verbose IOAUX debug messages</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_VERBOSE_IOAUX">false</spirit:value>
@@ -7958,6 +8028,21 @@
           <spirit:value spirit:format="long" spirit:id="DIAG_TG_AVL_2_NUM_CFG_INTERFACES">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>DIAG_EXPORT_PLL_REF_CLK_OUT</spirit:name>
+          <spirit:displayName>PARAM_DIAG_EXPORT_PLL_REF_CLK_OUT_NAME</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_EXPORT_PLL_REF_CLK_OUT">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_EXPORT_PLL_LOCKED</spirit:name>
+          <spirit:displayName>PARAM_DIAG_EXPORT_PLL_LOCKED_NAME</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_EXPORT_PLL_LOCKED">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_HMC_HRC</spirit:name>
+          <spirit:displayName>PARAM_DIAG_HMC_HRC_NAME</spirit:displayName>
+          <spirit:value spirit:format="string" spirit:id="DIAG_HMC_HRC">auto</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>SHORT_QSYS_INTERFACE_NAMES</spirit:name>
           <spirit:displayName>Use short Qsys interface names</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="SHORT_QSYS_INTERFACE_NAMES">false</spirit:value>
@@ -7988,11 +8073,6 @@
           <spirit:value spirit:format="long" spirit:id="DIAG_EX_DESIGN_NUM_OF_SLAVES">1</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
-          <spirit:name>DIAG_EX_DESIGN_SEPARATE_RZQS</spirit:name>
-          <spirit:displayName>Use a separate RZQ resistor for every sharing interface</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="DIAG_EX_DESIGN_SEPARATE_RZQS">false</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
           <spirit:name>DIAG_EX_DESIGN_ISSP_EN</spirit:name>
           <spirit:displayName>Enable In-System-Sources-and-Probes</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_EX_DESIGN_ISSP_EN">true</spirit:value>
@@ -8016,6 +8096,11 @@
           <spirit:name>DIAG_USE_TG_AVL_2</spirit:name>
           <spirit:displayName>Use configurable Avalon traffic generator 2.0</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_USE_TG_AVL_2">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_INFI_TG2_ERR_TEST</spirit:name>
+          <spirit:displayName>Run diagnostic on infinite test duration</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_INFI_TG2_ERR_TEST">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_USE_ABSTRACT_PHY</spirit:name>
@@ -8058,6 +8143,16 @@
           <spirit:value spirit:format="bool" spirit:id="DIAG_ENABLE_SOFT_M20K">true</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>DIAG_SIM_CHECKER_SKIP_TG</spirit:name>
+          <spirit:displayName>PARAM_DIAG_SIM_CHECKER_SKIP_TG_NAME</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_SIM_CHECKER_SKIP_TG">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_EX_DESIGN_SEPARATE_RZQS</spirit:name>
+          <spirit:displayName>PARAM_DIAG_EX_DESIGN_SEPARATE_RZQS_NAME</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_EX_DESIGN_SEPARATE_RZQS">true</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>DIAG_DDR3_SIM_CAL_MODE_ENUM</spirit:name>
           <spirit:displayName>Calibration mode</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="DIAG_DDR3_SIM_CAL_MODE_ENUM">SIM_CAL_MODE_SKIP</spirit:value>
@@ -8076,11 +8171,6 @@
           <spirit:name>DIAG_DDR3_EX_DESIGN_NUM_OF_SLAVES</spirit:name>
           <spirit:displayName>Number of core clocks sharing slaves to instantiate in the example design</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="DIAG_DDR3_EX_DESIGN_NUM_OF_SLAVES">1</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>DIAG_DDR3_EX_DESIGN_SEPARATE_RZQS</spirit:name>
-          <spirit:displayName>Use a separate RZQ resistor for every sharing interface</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="DIAG_DDR3_EX_DESIGN_SEPARATE_RZQS">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_DDR3_EX_DESIGN_ISSP_EN</spirit:name>
@@ -8104,7 +8194,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_DDR3_ABSTRACT_PHY</spirit:name>
-          <spirit:displayName>Abstract phy for fast simulation</spirit:displayName>
+          <spirit:displayName>Abstract phy for fast simulation </spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_DDR3_ABSTRACT_PHY">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
@@ -8128,6 +8218,11 @@
           <spirit:value spirit:format="bool" spirit:id="DIAG_DDR3_BYPASS_STRESS_STAGE">true</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>DIAG_DDR3_INFI_TG2_ERR_TEST</spirit:name>
+          <spirit:displayName>Run diagnostic on infinite test duration</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_DDR3_INFI_TG2_ERR_TEST">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>DIAG_DDR3_TG_DATA_PATTERN_LENGTH</spirit:name>
           <spirit:displayName>Data Pattern Length</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="DIAG_DDR3_TG_DATA_PATTERN_LENGTH">8</spirit:value>
@@ -8141,6 +8236,11 @@
           <spirit:name>DIAG_DDR3_SEPARATE_READ_WRITE_ITFS</spirit:name>
           <spirit:displayName>PARAM_DIAG_SEPARATE_READ_WRITE_ITFS_NAME</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_DDR3_SEPARATE_READ_WRITE_ITFS">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_DDR3_EX_DESIGN_SEPARATE_RZQS</spirit:name>
+          <spirit:displayName>PARAM_DIAG_DDR3_EX_DESIGN_SEPARATE_RZQS_NAME</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_DDR3_EX_DESIGN_SEPARATE_RZQS">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_DDR3_CA_LEVEL_EN</spirit:name>
@@ -8168,6 +8268,11 @@
           <spirit:value spirit:format="bool" spirit:id="DIAG_DDR3_CAL_FULL_CAL_ON_RESET">true</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>DIAG_DDR3_CAL_ENABLE_MICRON_AP</spirit:name>
+          <spirit:displayName>Enable Micron Automata Calibration</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_DDR3_CAL_ENABLE_MICRON_AP">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>DIAG_DDR4_SIM_CAL_MODE_ENUM</spirit:name>
           <spirit:displayName>Calibration mode</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="DIAG_DDR4_SIM_CAL_MODE_ENUM">SIM_CAL_MODE_SKIP</spirit:value>
@@ -8186,11 +8291,6 @@
           <spirit:name>DIAG_DDR4_EX_DESIGN_NUM_OF_SLAVES</spirit:name>
           <spirit:displayName>Number of core clocks sharing slaves to instantiate in the example design</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="DIAG_DDR4_EX_DESIGN_NUM_OF_SLAVES">1</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>DIAG_DDR4_EX_DESIGN_SEPARATE_RZQS</spirit:name>
-          <spirit:displayName>Use a separate RZQ resistor for every sharing interface</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="DIAG_DDR4_EX_DESIGN_SEPARATE_RZQS">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_DDR4_EX_DESIGN_ISSP_EN</spirit:name>
@@ -8214,7 +8314,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_DDR4_ABSTRACT_PHY</spirit:name>
-          <spirit:displayName>Abstract phy for fast simulation</spirit:displayName>
+          <spirit:displayName>Abstract phy for fast simulation </spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_DDR4_ABSTRACT_PHY">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
@@ -8238,6 +8338,11 @@
           <spirit:value spirit:format="bool" spirit:id="DIAG_DDR4_BYPASS_STRESS_STAGE">true</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>DIAG_DDR4_INFI_TG2_ERR_TEST</spirit:name>
+          <spirit:displayName>Run diagnostic on infinite test duration</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_DDR4_INFI_TG2_ERR_TEST">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>DIAG_DDR4_TG_DATA_PATTERN_LENGTH</spirit:name>
           <spirit:displayName>Data Pattern Length</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="DIAG_DDR4_TG_DATA_PATTERN_LENGTH">8</spirit:value>
@@ -8251,6 +8356,11 @@
           <spirit:name>DIAG_DDR4_SEPARATE_READ_WRITE_ITFS</spirit:name>
           <spirit:displayName>PARAM_DIAG_SEPARATE_READ_WRITE_ITFS_NAME</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_DDR4_SEPARATE_READ_WRITE_ITFS">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_DDR4_EX_DESIGN_SEPARATE_RZQS</spirit:name>
+          <spirit:displayName>PARAM_DIAG_DDR4_EX_DESIGN_SEPARATE_RZQS_NAME</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_DDR4_EX_DESIGN_SEPARATE_RZQS">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_DDR4_SKIP_CA_LEVEL</spirit:name>
@@ -8308,11 +8418,6 @@
           <spirit:value spirit:format="long" spirit:id="DIAG_QDR2_EX_DESIGN_NUM_OF_SLAVES">1</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
-          <spirit:name>DIAG_QDR2_EX_DESIGN_SEPARATE_RZQS</spirit:name>
-          <spirit:displayName>Use a separate RZQ resistor for every sharing interface</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="DIAG_QDR2_EX_DESIGN_SEPARATE_RZQS">false</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
           <spirit:name>DIAG_QDR2_EX_DESIGN_ISSP_EN</spirit:name>
           <spirit:displayName>Enable In-System-Sources-and-Probes</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_QDR2_EX_DESIGN_ISSP_EN">true</spirit:value>
@@ -8334,7 +8439,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_QDR2_ABSTRACT_PHY</spirit:name>
-          <spirit:displayName>Abstract phy for fast simulation</spirit:displayName>
+          <spirit:displayName>Abstract phy for fast simulation </spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_QDR2_ABSTRACT_PHY">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
@@ -8358,6 +8463,11 @@
           <spirit:value spirit:format="bool" spirit:id="DIAG_QDR2_BYPASS_STRESS_STAGE">true</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>DIAG_QDR2_INFI_TG2_ERR_TEST</spirit:name>
+          <spirit:displayName>Run diagnostic on infinite test duration</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_QDR2_INFI_TG2_ERR_TEST">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>DIAG_QDR2_TG_DATA_PATTERN_LENGTH</spirit:name>
           <spirit:displayName>Data Pattern Length</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="DIAG_QDR2_TG_DATA_PATTERN_LENGTH">8</spirit:value>
@@ -8371,6 +8481,11 @@
           <spirit:name>DIAG_QDR2_SEPARATE_READ_WRITE_ITFS</spirit:name>
           <spirit:displayName>PARAM_DIAG_SEPARATE_READ_WRITE_ITFS_NAME</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_QDR2_SEPARATE_READ_WRITE_ITFS">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_QDR2_EX_DESIGN_SEPARATE_RZQS</spirit:name>
+          <spirit:displayName>PARAM_DIAG_QDR2_EX_DESIGN_SEPARATE_RZQS_NAME</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_QDR2_EX_DESIGN_SEPARATE_RZQS">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_QDR4_SIM_CAL_MODE_ENUM</spirit:name>
@@ -8391,11 +8506,6 @@
           <spirit:name>DIAG_QDR4_EX_DESIGN_NUM_OF_SLAVES</spirit:name>
           <spirit:displayName>Number of core clocks sharing slaves to instantiate in the example design</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="DIAG_QDR4_EX_DESIGN_NUM_OF_SLAVES">1</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>DIAG_QDR4_EX_DESIGN_SEPARATE_RZQS</spirit:name>
-          <spirit:displayName>Use a separate RZQ resistor for every sharing interface</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="DIAG_QDR4_EX_DESIGN_SEPARATE_RZQS">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_QDR4_EX_DESIGN_ISSP_EN</spirit:name>
@@ -8419,7 +8529,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_QDR4_ABSTRACT_PHY</spirit:name>
-          <spirit:displayName>Abstract phy for fast simulation</spirit:displayName>
+          <spirit:displayName>Abstract phy for fast simulation </spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_QDR4_ABSTRACT_PHY">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
@@ -8443,6 +8553,11 @@
           <spirit:value spirit:format="bool" spirit:id="DIAG_QDR4_BYPASS_STRESS_STAGE">true</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>DIAG_QDR4_INFI_TG2_ERR_TEST</spirit:name>
+          <spirit:displayName>Run diagnostic on infinite test duration</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_QDR4_INFI_TG2_ERR_TEST">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>DIAG_QDR4_TG_DATA_PATTERN_LENGTH</spirit:name>
           <spirit:displayName>Data Pattern Length</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="DIAG_QDR4_TG_DATA_PATTERN_LENGTH">8</spirit:value>
@@ -8456,6 +8571,11 @@
           <spirit:name>DIAG_QDR4_SEPARATE_READ_WRITE_ITFS</spirit:name>
           <spirit:displayName>PARAM_DIAG_SEPARATE_READ_WRITE_ITFS_NAME</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_QDR4_SEPARATE_READ_WRITE_ITFS">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_QDR4_EX_DESIGN_SEPARATE_RZQS</spirit:name>
+          <spirit:displayName>PARAM_DIAG_QDR4_EX_DESIGN_SEPARATE_RZQS_NAME</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_QDR4_EX_DESIGN_SEPARATE_RZQS">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_QDR4_SKIP_VREF_CAL</spirit:name>
@@ -8483,11 +8603,6 @@
           <spirit:value spirit:format="long" spirit:id="DIAG_RLD2_EX_DESIGN_NUM_OF_SLAVES">1</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
-          <spirit:name>DIAG_RLD2_EX_DESIGN_SEPARATE_RZQS</spirit:name>
-          <spirit:displayName>Use a separate RZQ resistor for every sharing interface</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="DIAG_RLD2_EX_DESIGN_SEPARATE_RZQS">false</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
           <spirit:name>DIAG_RLD2_EX_DESIGN_ISSP_EN</spirit:name>
           <spirit:displayName>Enable In-System-Sources-and-Probes</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_RLD2_EX_DESIGN_ISSP_EN">true</spirit:value>
@@ -8509,7 +8624,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_RLD2_ABSTRACT_PHY</spirit:name>
-          <spirit:displayName>Abstract phy for fast simulation</spirit:displayName>
+          <spirit:displayName>Abstract phy for fast simulation </spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_RLD2_ABSTRACT_PHY">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
@@ -8533,6 +8648,11 @@
           <spirit:value spirit:format="bool" spirit:id="DIAG_RLD2_BYPASS_STRESS_STAGE">true</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>DIAG_RLD2_INFI_TG2_ERR_TEST</spirit:name>
+          <spirit:displayName>Run diagnostic on infinite test duration</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_RLD2_INFI_TG2_ERR_TEST">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>DIAG_RLD2_TG_DATA_PATTERN_LENGTH</spirit:name>
           <spirit:displayName>Data Pattern Length</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="DIAG_RLD2_TG_DATA_PATTERN_LENGTH">8</spirit:value>
@@ -8546,6 +8666,11 @@
           <spirit:name>DIAG_RLD2_SEPARATE_READ_WRITE_ITFS</spirit:name>
           <spirit:displayName>PARAM_DIAG_SEPARATE_READ_WRITE_ITFS_NAME</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_RLD2_SEPARATE_READ_WRITE_ITFS">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_RLD2_EX_DESIGN_SEPARATE_RZQS</spirit:name>
+          <spirit:displayName>PARAM_DIAG_RLD2_EX_DESIGN_SEPARATE_RZQS_NAME</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_RLD2_EX_DESIGN_SEPARATE_RZQS">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_RLD3_SIM_CAL_MODE_ENUM</spirit:name>
@@ -8566,11 +8691,6 @@
           <spirit:name>DIAG_RLD3_EX_DESIGN_NUM_OF_SLAVES</spirit:name>
           <spirit:displayName>Number of core clocks sharing slaves to instantiate in the example design</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="DIAG_RLD3_EX_DESIGN_NUM_OF_SLAVES">1</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>DIAG_RLD3_EX_DESIGN_SEPARATE_RZQS</spirit:name>
-          <spirit:displayName>Use a separate RZQ resistor for every sharing interface</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="DIAG_RLD3_EX_DESIGN_SEPARATE_RZQS">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_RLD3_EX_DESIGN_ISSP_EN</spirit:name>
@@ -8594,7 +8714,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_RLD3_ABSTRACT_PHY</spirit:name>
-          <spirit:displayName>Abstract phy for fast simulation</spirit:displayName>
+          <spirit:displayName>Abstract phy for fast simulation </spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_RLD3_ABSTRACT_PHY">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
@@ -8618,6 +8738,11 @@
           <spirit:value spirit:format="bool" spirit:id="DIAG_RLD3_BYPASS_STRESS_STAGE">true</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>DIAG_RLD3_INFI_TG2_ERR_TEST</spirit:name>
+          <spirit:displayName>Run diagnostic on infinite test duration</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_RLD3_INFI_TG2_ERR_TEST">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>DIAG_RLD3_TG_DATA_PATTERN_LENGTH</spirit:name>
           <spirit:displayName>Data Pattern Length</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="DIAG_RLD3_TG_DATA_PATTERN_LENGTH">8</spirit:value>
@@ -8631,6 +8756,11 @@
           <spirit:name>DIAG_RLD3_SEPARATE_READ_WRITE_ITFS</spirit:name>
           <spirit:displayName>PARAM_DIAG_SEPARATE_READ_WRITE_ITFS_NAME</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_RLD3_SEPARATE_READ_WRITE_ITFS">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_RLD3_EX_DESIGN_SEPARATE_RZQS</spirit:name>
+          <spirit:displayName>PARAM_DIAG_RLD3_EX_DESIGN_SEPARATE_RZQS_NAME</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_RLD3_EX_DESIGN_SEPARATE_RZQS">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_LPDDR3_SIM_CAL_MODE_ENUM</spirit:name>
@@ -8651,11 +8781,6 @@
           <spirit:name>DIAG_LPDDR3_EX_DESIGN_NUM_OF_SLAVES</spirit:name>
           <spirit:displayName>Number of core clocks sharing slaves to instantiate in the example design</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="DIAG_LPDDR3_EX_DESIGN_NUM_OF_SLAVES">1</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>DIAG_LPDDR3_EX_DESIGN_SEPARATE_RZQS</spirit:name>
-          <spirit:displayName>Use a separate RZQ resistor for every sharing interface</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="DIAG_LPDDR3_EX_DESIGN_SEPARATE_RZQS">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_LPDDR3_EX_DESIGN_ISSP_EN</spirit:name>
@@ -8679,7 +8804,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_LPDDR3_ABSTRACT_PHY</spirit:name>
-          <spirit:displayName>Abstract phy for fast simulation</spirit:displayName>
+          <spirit:displayName>Abstract phy for fast simulation </spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_LPDDR3_ABSTRACT_PHY">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
@@ -8703,6 +8828,11 @@
           <spirit:value spirit:format="bool" spirit:id="DIAG_LPDDR3_BYPASS_STRESS_STAGE">true</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>DIAG_LPDDR3_INFI_TG2_ERR_TEST</spirit:name>
+          <spirit:displayName>Run diagnostic on infinite test duration</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_LPDDR3_INFI_TG2_ERR_TEST">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>DIAG_LPDDR3_TG_DATA_PATTERN_LENGTH</spirit:name>
           <spirit:displayName>Data Pattern Length</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="DIAG_LPDDR3_TG_DATA_PATTERN_LENGTH">8</spirit:value>
@@ -8716,6 +8846,11 @@
           <spirit:name>DIAG_LPDDR3_SEPARATE_READ_WRITE_ITFS</spirit:name>
           <spirit:displayName>PARAM_DIAG_SEPARATE_READ_WRITE_ITFS_NAME</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_LPDDR3_SEPARATE_READ_WRITE_ITFS">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_LPDDR3_EX_DESIGN_SEPARATE_RZQS</spirit:name>
+          <spirit:displayName>PARAM_DIAG_LPDDR3_EX_DESIGN_SEPARATE_RZQS_NAME</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_LPDDR3_EX_DESIGN_SEPARATE_RZQS">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_LPDDR3_SKIP_CA_LEVEL</spirit:name>
@@ -8977,6 +9112,11 @@
           <spirit:value spirit:format="string" spirit:id="deviceSpeedGrade">1</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>generationId</spirit:name>
+          <spirit:displayName>Generation Id</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="generationId">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>bonusData</spirit:name>
           <spirit:displayName>bonusData</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="bonusData">bonusData 
@@ -9186,8 +9326,20 @@
                         <value>0</value>
                     </entry>
                     <entry>
+                        <key>minimumReadLatency</key>
+                        <value>1</value>
+                    </entry>
+                    <entry>
+                        <key>minimumResponseLatency</key>
+                        <value>1</value>
+                    </entry>
+                    <entry>
                         <key>minimumUninterruptedRunLength</key>
                         <value>1</value>
+                    </entry>
+                    <entry>
+                        <key>prSafe</key>
+                        <value>false</value>
                     </entry>
                     <entry>
                         <key>printableDevice</key>
@@ -9224,6 +9376,10 @@
                     <entry>
                         <key>transparentBridge</key>
                         <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>waitrequestAllowance</key>
+                        <value>0</value>
                     </entry>
                     <entry>
                         <key>wellBehavedWaitrequest</key>
@@ -9478,6 +9634,10 @@
                     <entry>
                         <key>associatedReset</key>
                     </entry>
+                    <entry>
+                        <key>prSafe</key>
+                        <value>false</value>
+                    </entry>
                 </parameterValueMap>
             </parameters>
         </interface>
@@ -9505,6 +9665,10 @@
                     </entry>
                     <entry>
                         <key>associatedReset</key>
+                    </entry>
+                    <entry>
+                        <key>prSafe</key>
+                        <value>false</value>
                     </entry>
                 </parameterValueMap>
             </parameters>
@@ -9574,6 +9738,10 @@
                     </entry>
                     <entry>
                         <key>associatedReset</key>
+                    </entry>
+                    <entry>
+                        <key>prSafe</key>
+                        <value>false</value>
                     </entry>
                 </parameterValueMap>
             </parameters>

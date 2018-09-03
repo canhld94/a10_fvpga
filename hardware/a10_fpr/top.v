@@ -58,16 +58,39 @@ module top(
 wire 		npor;
 wire 		local_cal_fail;
 wire 		local_cal_success;
-
+// Four PR signals
 wire         	alt_pr_freeze_freeze;	
-
+wire         	alt_pr_freeze_freeze_1;	
+wire         	alt_pr_freeze_freeze_2;	
+wire         	alt_pr_freeze_freeze_3;	
+// Four clock signals
 wire		board_kernel_clk_clk;
+wire		board_kernel_clk_1_clk;
+wire		board_kernel_clk_2_clk;
+wire		board_kernel_clk_3_clk;
+
 wire		board_kernel_clk2x_clk;
+wire		board_kernel_clk2x_1_clk;
+wire		board_kernel_clk2x_2_clk;
+wire		board_kernel_clk2x_3_clk;
+// Four reset signals
 wire         	board_kernel_reset_reset_n;
+wire         	board_kernel_reset_1_reset_n;
+wire         	board_kernel_reset_2_reset_n;
+wire         	board_kernel_reset_3_reset_n;
+// Four IRQ signals 
 wire [0:0]   	board_kernel_irq_irq;
+wire [0:0]   	board_kernel_irq_1_irq;
+wire [0:0]   	board_kernel_irq_2_irq;
+wire [0:0]   	board_kernel_irq_3_irq;
+
+// Dont care about snooping now
 wire [30:0]	board_acl_internal_snoop_data;
 wire 		board_acl_internal_snoop_valid;
 wire		board_acl_internal_snoop_ready;
+
+// Dupplicated all kernel interface and DDR interface
+
 wire		board_kernel_cra_waitrequest;
 wire [63:0]	board_kernel_cra_readdata;
 wire         	board_kernel_cra_readdatavalid;
@@ -88,6 +111,69 @@ wire         	board_kernel_mem0_write;
 wire         	board_kernel_mem0_read;
 wire [63:0]  	board_kernel_mem0_byteenable;
 wire         	board_kernel_mem0_debugaccess;
+
+wire		board_kernel_cra_1_waitrequest;
+wire [63:0]	board_kernel_cra_1_readdata;
+wire         	board_kernel_cra_1_readdatavalid;
+wire [0:0]  	board_kernel_cra_1_burstcount;
+wire [63:0]  	board_kernel_cra_1_writedata;
+wire [29:0]  	board_kernel_cra_1_address;
+wire         	board_kernel_cra_1_write;
+wire         	board_kernel_cra_1_read;
+wire [7:0]   	board_kernel_cra_1_byteenable;
+wire         	board_kernel_cra_1_debugaccess;
+wire         	board_kernel_mem1_waitrequest;
+wire [511:0] 	board_kernel_mem1_readdata;
+wire         	board_kernel_mem1_readdatavalid;
+wire [4:0]   	board_kernel_mem1_burstcount;
+wire [511:0] 	board_kernel_mem1_writedata;
+wire [30:0]  	board_kernel_mem1_address;
+wire         	board_kernel_mem1_write;
+wire         	board_kernel_mem1_read;
+wire [63:0]  	board_kernel_mem1_byteenable;
+wire         	board_kernel_mem1_debugaccess;
+
+wire		board_kernel_cra_2_waitrequest;
+wire [63:0]	board_kernel_cra_2_readdata;
+wire         	board_kernel_cra_2_readdatavalid;
+wire [0:0]  	board_kernel_cra_2_burstcount;
+wire [63:0]  	board_kernel_cra_2_writedata;
+wire [29:0]  	board_kernel_cra_2_address;
+wire         	board_kernel_cra_2_write;
+wire         	board_kernel_cra_2_read;
+wire [7:0]   	board_kernel_cra_2_byteenable;
+wire         	board_kernel_cra_2_debugaccess;
+wire         	board_kernel_mem2_waitrequest;
+wire [511:0] 	board_kernel_mem2_readdata;
+wire         	board_kernel_mem2_readdatavalid;
+wire [4:0]   	board_kernel_mem2_burstcount;
+wire [511:0] 	board_kernel_mem2_writedata;
+wire [30:0]  	board_kernel_mem2_address;
+wire         	board_kernel_mem2_write;
+wire         	board_kernel_mem2_read;
+wire [63:0]  	board_kernel_mem2_byteenable;
+wire         	board_kernel_mem2_debugaccess;
+
+wire		board_kernel_cra_3_waitrequest;
+wire [63:0]	board_kernel_cra_3_readdata;
+wire         	board_kernel_cra_3_readdatavalid;
+wire [0:0]  	board_kernel_cra_3_burstcount;
+wire [63:0]  	board_kernel_cra_3_writedata;
+wire [29:0]  	board_kernel_cra_3_address;
+wire         	board_kernel_cra_3_write;
+wire         	board_kernel_cra_3_read;
+wire [7:0]   	board_kernel_cra_3_byteenable;
+wire         	board_kernel_cra_3_debugaccess;
+wire         	board_kernel_mem3_waitrequest;
+wire [511:0] 	board_kernel_mem3_readdata;
+wire         	board_kernel_mem3_readdatavalid;
+wire [4:0]   	board_kernel_mem3_burstcount;
+wire [511:0] 	board_kernel_mem3_writedata;
+wire [30:0]  	board_kernel_mem3_address;
+wire         	board_kernel_mem3_write;
+wire         	board_kernel_mem3_read;
+wire [63:0]  	board_kernel_mem3_byteenable;
+wire         	board_kernel_mem3_debugaccess;
 
 //=======================================================
 // LEDs for debug
@@ -131,36 +217,56 @@ board board_inst
   .pcie_hip_serial_tx_out7( hip_serial_tx_out[7] ),
 
   // DDR4 pins
-  .ddr4a_pll_ref_clk( pll_ref_clk ),
+  .ddr4a_pll_ref_clk_clk( pll_ref_clk ),
   .ddr4a_oct_oct_rzqin( oct_rzqin ),
-  .ddr4a_mem_ba( mem_ba ),
-  .ddr4a_mem_bg( mem_bg ),
-  .ddr4a_mem_cke( mem_cke ),
-  .ddr4a_mem_ck( mem_ck ),
-  .ddr4a_mem_ck_n( mem_ck_n ),
-  .ddr4a_mem_cs_n( mem_cs_n ),
-  .ddr4a_mem_reset_n( mem_reset_n ),
-  .ddr4a_mem_odt( mem_odt ),
-  .ddr4a_mem_act_n( mem_act_n ),
-  .ddr4a_mem_a( mem_a ),
-  .ddr4a_mem_dq( mem_dq ),
-  .ddr4a_mem_dqs( mem_dqs ),
-  .ddr4a_mem_dqs_n( mem_dqs_n ),
-  .ddr4a_mem_dbi_n( mem_dbi_n ),
+  .ddr4a_mem_mem_ba( mem_ba ),
+  .ddr4a_mem_mem_bg( mem_bg ),
+  .ddr4a_mem_mem_cke( mem_cke ),
+  .ddr4a_mem_mem_ck( mem_ck ),
+  .ddr4a_mem_mem_ck_n( mem_ck_n ),
+  .ddr4a_mem_mem_cs_n( mem_cs_n ),
+  .ddr4a_mem_mem_reset_n( mem_reset_n ),
+  .ddr4a_mem_mem_odt( mem_odt ),
+  .ddr4a_mem_mem_act_n( mem_act_n ),
+  .ddr4a_mem_mem_a( mem_a ),
+  .ddr4a_mem_mem_dq( mem_dq ),
+  .ddr4a_mem_mem_dqs( mem_dqs ),
+  .ddr4a_mem_mem_dqs_n( mem_dqs_n ),
+  .ddr4a_mem_mem_dbi_n( mem_dbi_n ),
   .ddr4a_status_local_cal_fail( local_cal_fail ),
   .ddr4a_status_local_cal_success( local_cal_success ),
 
   // signals for PR
   .alt_pr_freeze_freeze(alt_pr_freeze_freeze),
+  .alt_pr_freeze_1_freeze_1(alt_pr_freeze_freeze_1),
+  .alt_pr_freeze_2_freeze_2(alt_pr_freeze_freeze_2),
+  .alt_pr_freeze_3_freeze_3(alt_pr_freeze_freeze_3),
 
   // board ports
   .kernel_clk_clk(board_kernel_clk_clk),
+  .kernel_clk_1_clk(board_kernel_clk_1_clk),
+  .kernel_clk_2_clk(board_kernel_clk_2_clk),
+  .kernel_clk_3_clk(board_kernel_clk_3_clk),
+
   .kernel_clk2x_clk(board_kernel_clk2x_clk),
+  .kernel_clk2x_1_clk(board_kernel_clk2x_1_clk),
+  .kernel_clk2x_2_clk(board_kernel_clk2x_2_clk),
+  .kernel_clk2x_3_clk(board_kernel_clk2x_3_clk),
+
   .kernel_reset_reset_n(board_kernel_reset_reset_n),
+  .kernel_reset_1_reset_n(board_kernel_reset_1_reset_n),
+  .kernel_reset_2_reset_n(board_kernel_reset_2_reset_n),
+  .kernel_reset_3_reset_n(board_kernel_reset_3_reset_n),
+
   .kernel_irq_irq(board_kernel_irq_irq),
+  .kernel_irq_1_irq(board_kernel_irq_1_irq),
+  .kernel_irq_2_irq(board_kernel_irq_2_irq),
+  .kernel_irq_3_irq(board_kernel_irq_3_irq),
+
   .acl_internal_snoop_data(board_acl_internal_snoop_data),
   .acl_internal_snoop_valid(board_acl_internal_snoop_valid),
   .acl_internal_snoop_ready(board_acl_internal_snoop_ready),
+
   .kernel_cra_waitrequest(board_kernel_cra_waitrequest),
   .kernel_cra_readdata(board_kernel_cra_readdata),
   .kernel_cra_readdatavalid(board_kernel_cra_readdatavalid),
@@ -180,12 +286,78 @@ board board_inst
   .kernel_mem0_write(board_kernel_mem0_write),
   .kernel_mem0_read(board_kernel_mem0_read),
   .kernel_mem0_byteenable(board_kernel_mem0_byteenable),
-  .kernel_mem0_debugaccess(board_kernel_mem0_debugaccess)
+  .kernel_mem0_debugaccess(board_kernel_mem0_debugaccess),
+
+  .kernel_cra_1_waitrequest(board_kernel_cra_1_waitrequest),
+  .kernel_cra_1_readdata(board_kernel_cra_1_readdata),
+  .kernel_cra_1_readdatavalid(board_kernel_cra_1_readdatavalid),
+  .kernel_cra_1_burstcount(board_kernel_cra_1_burstcount),
+  .kernel_cra_1_writedata(board_kernel_cra_1_writedata),
+  .kernel_cra_1_address(board_kernel_cra_1_address),
+  .kernel_cra_1_write(board_kernel_cra_1_write),
+  .kernel_cra_1_read(board_kernel_cra_1_read),
+  .kernel_cra_1_byteenable(board_kernel_cra_1_byteenable),
+  .kernel_cra_1_debugaccess(board_kernel_cra_1_debugaccess),
+  .kernel_mem1_waitrequest(board_kernel_mem1_waitrequest),
+  .kernel_mem1_readdata(board_kernel_mem1_readdata),
+  .kernel_mem1_readdatavalid(board_kernel_mem1_readdatavalid),
+  .kernel_mem1_burstcount(board_kernel_mem1_burstcount),
+  .kernel_mem1_writedata(board_kernel_mem1_writedata),
+  .kernel_mem1_address(board_kernel_mem1_address),
+  .kernel_mem1_write(board_kernel_mem1_write),
+  .kernel_mem1_read(board_kernel_mem1_read),
+  .kernel_mem1_byteenable(board_kernel_mem1_byteenable),
+  .kernel_mem1_debugaccess(board_kernel_mem1_debugaccess),
+
+  .kernel_cra_2_waitrequest(board_kernel_cra_2_waitrequest),
+  .kernel_cra_2_readdata(board_kernel_cra_2_readdata),
+  .kernel_cra_2_readdatavalid(board_kernel_cra_2_readdatavalid),
+  .kernel_cra_2_burstcount(board_kernel_cra_2_burstcount),
+  .kernel_cra_2_writedata(board_kernel_cra_2_writedata),
+  .kernel_cra_2_address(board_kernel_cra_2_address),
+  .kernel_cra_2_write(board_kernel_cra_2_write),
+  .kernel_cra_2_read(board_kernel_cra_2_read),
+  .kernel_cra_2_byteenable(board_kernel_cra_2_byteenable),
+  .kernel_cra_2_debugaccess(board_kernel_cra_2_debugaccess),
+  .kernel_mem2_waitrequest(board_kernel_mem2_waitrequest),
+  .kernel_mem2_readdata(board_kernel_mem2_readdata),
+  .kernel_mem2_readdatavalid(board_kernel_mem2_readdatavalid),
+  .kernel_mem2_burstcount(board_kernel_mem2_burstcount),
+  .kernel_mem2_writedata(board_kernel_mem2_writedata),
+  .kernel_mem2_address(board_kernel_mem2_address),
+  .kernel_mem2_write(board_kernel_mem2_write),
+  .kernel_mem2_read(board_kernel_mem2_read),
+  .kernel_mem2_byteenable(board_kernel_mem2_byteenable),
+  .kernel_mem2_debugaccess(board_kernel_mem2_debugaccess),
+
+  .kernel_cra_3_waitrequest(board_kernel_cra_3_waitrequest),
+  .kernel_cra_3_readdata(board_kernel_cra_3_readdata),
+  .kernel_cra_3_readdatavalid(board_kernel_cra_3_readdatavalid),
+  .kernel_cra_3_burstcount(board_kernel_cra_3_burstcount),
+  .kernel_cra_3_writedata(board_kernel_cra_3_writedata),
+  .kernel_cra_3_address(board_kernel_cra_3_address),
+  .kernel_cra_3_write(board_kernel_cra_3_write),
+  .kernel_cra_3_read(board_kernel_cra_3_read),
+  .kernel_cra_3_byteenable(board_kernel_cra_3_byteenable),
+  .kernel_cra_3_debugaccess(board_kernel_cra_3_debugaccess),
+  .kernel_mem3_waitrequest(board_kernel_mem3_waitrequest),
+  .kernel_mem3_readdata(board_kernel_mem3_readdata),
+  .kernel_mem3_readdatavalid(board_kernel_mem3_readdatavalid),
+  .kernel_mem3_burstcount(board_kernel_mem3_burstcount),
+  .kernel_mem3_writedata(board_kernel_mem3_writedata),
+  .kernel_mem3_address(board_kernel_mem3_address),
+  .kernel_mem3_write(board_kernel_mem3_write),
+  .kernel_mem3_read(board_kernel_mem3_read),
+  .kernel_mem3_byteenable(board_kernel_mem3_byteenable),
+  .kernel_mem3_debugaccess(board_kernel_mem3_debugaccess)
+
 );
 
 //=======================================================
 // freeze wrapper instantiation
 //=======================================================
+
+// Originral OpenCL PR region
 freeze_wrapper freeze_wrapper_inst
 (
   .freeze(alt_pr_freeze_freeze),  
@@ -219,5 +391,112 @@ freeze_wrapper freeze_wrapper_inst
   .board_kernel_mem0_byteenable(board_kernel_mem0_byteenable),
   .board_kernel_mem0_debugaccess(board_kernel_mem0_debugaccess)
 );
+
+// Custom PR region 1
+freeze_wrapper freeze_wrapper_inst_1
+(
+  .freeze(alt_pr_freeze_freeze_1),  
+  
+  // board ports
+  .board_kernel_clk_clk(board_kernel_clk_1_clk),
+  .board_kernel_clk2x_clk(board_kernel_clk2x_1_clk),
+  .board_kernel_reset_reset_n(board_kernel_reset_1_reset_n),
+  .board_kernel_irq_irq(board_kernel_irq_1_irq),
+  .board_acl_internal_snoop_data(),
+  .board_acl_internal_snoop_valid(),
+  .board_acl_internal_snoop_ready(),
+  .board_kernel_cra_waitrequest(board_kernel_cra_1_waitrequest),
+  .board_kernel_cra_readdata(board_kernel_cra_1_readdata),
+  .board_kernel_cra_readdatavalid(board_kernel_cra_1_readdatavalid),
+  .board_kernel_cra_burstcount(board_kernel_cra_1_burstcount),
+  .board_kernel_cra_writedata(board_kernel_cra_1_writedata),
+  .board_kernel_cra_address(board_kernel_cra_1_address),
+  .board_kernel_cra_write(board_kernel_cra_1_write),
+  .board_kernel_cra_read(board_kernel_cra_1_read),
+  .board_kernel_cra_byteenable(board_kernel_cra_1_byteenable),
+  .board_kernel_cra_debugaccess(board_kernel_cra_1_debugaccess),
+  .board_kernel_mem0_waitrequest(board_kernel_mem1_waitrequest),
+  .board_kernel_mem0_readdata(board_kernel_mem1_readdata),
+  .board_kernel_mem0_readdatavalid(board_kernel_mem1_readdatavalid),
+  .board_kernel_mem0_burstcount(board_kernel_mem1_burstcount),
+  .board_kernel_mem0_writedata(board_kernel_mem1_writedata),
+  .board_kernel_mem0_address(board_kernel_mem1_address),
+  .board_kernel_mem0_write(board_kernel_mem1_write),
+  .board_kernel_mem0_read(board_kernel_mem1_read),
+  .board_kernel_mem0_byteenable(board_kernel_mem1_byteenable),
+  .board_kernel_mem0_debugaccess(board_kernel_mem1_debugaccess)
+);
+
+// Custom PR region 1
+freeze_wrapper freeze_wrapper_inst_2
+(
+  .freeze(alt_pr_freeze_freeze_2),  
+  
+  // board ports
+  .board_kernel_clk_clk(board_kernel_clk_2_clk),
+  .board_kernel_clk2x_clk(board_kernel_clk2x_2_clk),
+  .board_kernel_reset_reset_n(board_kernel_reset_2_reset_n),
+  .board_kernel_irq_irq(board_kernel_irq_2_irq),
+  .board_acl_internal_snoop_data(),
+  .board_acl_internal_snoop_valid(),
+  .board_acl_internal_snoop_ready(),
+  .board_kernel_cra_waitrequest(board_kernel_cra_2_waitrequest),
+  .board_kernel_cra_readdata(board_kernel_cra_2_readdata),
+  .board_kernel_cra_readdatavalid(board_kernel_cra_2_readdatavalid),
+  .board_kernel_cra_burstcount(board_kernel_cra_2_burstcount),
+  .board_kernel_cra_writedata(board_kernel_cra_2_writedata),
+  .board_kernel_cra_address(board_kernel_cra_2_address),
+  .board_kernel_cra_write(board_kernel_cra_2_write),
+  .board_kernel_cra_read(board_kernel_cra_2_read),
+  .board_kernel_cra_byteenable(board_kernel_cra_2_byteenable),
+  .board_kernel_cra_debugaccess(board_kernel_cra_2_debugaccess),
+  .board_kernel_mem0_waitrequest(board_kernel_mem2_waitrequest),
+  .board_kernel_mem0_readdata(board_kernel_mem2_readdata),
+  .board_kernel_mem0_readdatavalid(board_kernel_mem2_readdatavalid),
+  .board_kernel_mem0_burstcount(board_kernel_mem2_burstcount),
+  .board_kernel_mem0_writedata(board_kernel_mem2_writedata),
+  .board_kernel_mem0_address(board_kernel_mem2_address),
+  .board_kernel_mem0_write(board_kernel_mem2_write),
+  .board_kernel_mem0_read(board_kernel_mem2_read),
+  .board_kernel_mem0_byteenable(board_kernel_mem2_byteenable),
+  .board_kernel_mem0_debugaccess(board_kernel_mem2_debugaccess)
+);
+
+// Custom PR region 1
+freeze_wrapper freeze_wrapper_inst_3
+(
+  .freeze(alt_pr_freeze_freeze_3),  
+  
+  // board ports
+  .board_kernel_clk_clk(board_kernel_clk_3_clk),
+  .board_kernel_clk2x_clk(board_kernel_clk2x_3_clk),
+  .board_kernel_reset_reset_n(board_kernel_reset_3_reset_n),
+  .board_kernel_irq_irq(board_kernel_irq_3_irq),
+  .board_acl_internal_snoop_data(),
+  .board_acl_internal_snoop_valid(),
+  .board_acl_internal_snoop_ready(),
+  .board_kernel_cra_waitrequest(board_kernel_cra_3_waitrequest),
+  .board_kernel_cra_readdata(board_kernel_cra_3_readdata),
+  .board_kernel_cra_readdatavalid(board_kernel_cra_3_readdatavalid),
+  .board_kernel_cra_burstcount(board_kernel_cra_3_burstcount),
+  .board_kernel_cra_writedata(board_kernel_cra_3_writedata),
+  .board_kernel_cra_address(board_kernel_cra_3_address),
+  .board_kernel_cra_write(board_kernel_cra_3_write),
+  .board_kernel_cra_read(board_kernel_cra_3_read),
+  .board_kernel_cra_byteenable(board_kernel_cra_3_byteenable),
+  .board_kernel_cra_debugaccess(board_kernel_cra_3_debugaccess),
+  .board_kernel_mem0_waitrequest(board_kernel_mem3_waitrequest),
+  .board_kernel_mem0_readdata(board_kernel_mem3_readdata),
+  .board_kernel_mem0_readdatavalid(board_kernel_mem3_readdatavalid),
+  .board_kernel_mem0_burstcount(board_kernel_mem3_burstcount),
+  .board_kernel_mem0_writedata(board_kernel_mem3_writedata),
+  .board_kernel_mem0_address(board_kernel_mem3_address),
+  .board_kernel_mem0_write(board_kernel_mem3_write),
+  .board_kernel_mem0_read(board_kernel_mem3_read),
+  .board_kernel_mem0_byteenable(board_kernel_mem3_byteenable),
+  .board_kernel_mem0_debugaccess(board_kernel_mem3_debugaccess)
+);
+
+
 
 endmodule
